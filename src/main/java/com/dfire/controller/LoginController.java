@@ -20,8 +20,6 @@ public class LoginController extends BaseController {
     @Autowired
     private LoginService loginService;
 
-    22222222222222@@@@@
-    
     private UserService userService;
 
 
