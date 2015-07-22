@@ -11,7 +11,7 @@
     <title>提交表单</title>
   </head>
   <body>
-    <form action="${ctx}/user/logon" method="post">
+    <form action="${ctx}/user/to_login" method="post">
       userName：<input type="text" name="userName"><br>
       passWord： <input type="password" name="passWord"><br>
       firstName：<input type="text" name="firstName"><br/>

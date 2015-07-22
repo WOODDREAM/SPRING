@@ -15,7 +15,7 @@ import java.util.List;
  * description：
  */
 
-@Repository("userMapper")
+@Repository( value = "userMapper")
 public interface Mapper {
 
     @Select(value = "${sql}")

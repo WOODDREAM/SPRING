@@ -59,4 +59,9 @@ public class TestLoginController {
         Assert.assertEquals("MyHome", loginController.logon(user.getUserName(), user.getPassWord()));
     }
 
+    @Test
+    public void testToLogin(){
+        loginController.toLogin();
+    }
+
 }
