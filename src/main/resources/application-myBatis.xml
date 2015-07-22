@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+       <context:property-placeholder location="classpath:database.properties"/>
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+              <property name="driverClassName" value="${mysql.driverclass}"/>
+              <property name="url" value="${mysql.jdbcurl}"/>
+              <property name="username" value="${mysql.user}"/>
+              <property name="password" value="${mysql.password}"/>
+              <property name="initialSize" value="10"/>
+              <property name="minIdle" value="10"/>
+              <property name="maxIdle" value="20"/>
+              <property name="maxActive" value="100"/>
+       </bean>
+       <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"></property>
+       </bean>
+
+       <bean id="userDao" class="org.mybatis.spring.SqlSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+       </bean>
+
+       <!--事务管理-->
+       <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+              <property name="dataSource" ref="dataSource"/>
+       </bean>
+       <!--可通过注解控制事务-->
+       <tx:annotation-driven/>
+
+       <!--Mapper接口所在包，spring自动检查其下的Mapper-->
+       <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+              <property name="basePackage" value="com.dfire.mapper.Mapper"/>
+       </bean>
+</beans>
