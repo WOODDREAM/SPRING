@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.dfire.mapper.Mapper">
+        <select id="getUser" parameterType="int"
+                resultType="com.dfire.bean.User">
+            SELECT * FROM USER WHERE userId= #{id}
+        </select>
+        <select id="getUserByName" parameterType="String"
+                resultType="com.dfire.bean.User">
+             SELECT * FROM USER WHERE userName= #{userName}
+        </select>
+        <update id="updateUser" parameterType="String"
+                >
+            UPDATE USER SET passWord="aaaa" WHERE userName=#{userName}
+        </update>
+        <select id="listSelect" parameterType="com.dfire.bean.User"
+                resultType="com.dfire.bean.User">
+            SELECT * FROM USER
+        </select>
+        <insert id="addUser" parameterType="com.dfire.bean.User">
+            INSERT INTO USER (userName,passWord,firstName,lastName,birthday,age)
+            VALUES (#{userName},#{passWord},#{firstName},#{lastName},#{birthday},#{age})
+        </insert>
+    </mapper>

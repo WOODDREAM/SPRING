@@ -28,6 +28,8 @@ public class LoginController extends BaseController {
     @Autowired
     private LoginService loginService;
 
+    private User user;
+
     @Resource(name="userService")
     private UserService userService;
 
@@ -80,6 +82,20 @@ public class LoginController extends BaseController {
         map.put("result",result);
         map.put("user",result.get(1));
 
+        return new ModelAndView("user",map);
+    }
+
+    /**
+     *
+     * @param userId
+     * @return
+     */
+    @RequestMapping("/user/check")
+    public ModelAndView loginForFind(String userId){
+
+        user = userService.getUserById(userId);
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("user", user);
         return new ModelAndView("user",map);
     }
 }

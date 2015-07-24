@@ -64,4 +64,8 @@ public class TestLoginController {
         loginController.toLogin();
     }
 
+    @Test
+    public void testloginForFind(){
+        loginController.loginForFind("2");
+    }
 }

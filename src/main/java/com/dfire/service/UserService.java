@@ -15,4 +15,10 @@ public interface UserService {
      * @return
      */
     List<User> find();
+
+    /**
+     * 按ID查询
+     * @return
+     */
+    User getUserById(String userId);
 }

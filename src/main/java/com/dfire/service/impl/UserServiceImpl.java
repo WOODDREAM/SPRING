@@ -27,4 +27,10 @@ public class UserServiceImpl implements UserService {
         String sql = "select * from user";
         return this.mapper.operateReturnBeans(sql);
     }
+
+    @Override
+    public User getUserById(String userId) {
+        String sql = "select * from user where userID =  2";
+        return this.mapper.getUserById(sql);
+    }
 }
